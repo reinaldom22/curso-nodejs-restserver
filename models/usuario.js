@@ -34,7 +34,8 @@ const usuarioSchema = Schema({
 
 //funcion para no mostrar información confidencial al momento de realizar un registro exitoso. 
 usuarioSchema.methods.toJSON = function () {
-    const { __v, password, ...usuario } = this.toObject();
+    const { __v, password, _id,  ...usuario } = this.toObject();
+    usuario.uid = _id;
     return usuario;
 }
 
